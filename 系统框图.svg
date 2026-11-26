@@ -1,0 +1,83 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 920 520" font-family="Microsoft YaHei, sans-serif">
+  <style>
+    .title { font-size: 22px; font-weight: bold; fill: #1a1a1a; }
+    .sub { font-size: 13px; fill: #666; }
+    .box { stroke: #333; stroke-width: 1.5; }
+    .energy { fill: #fff3cd; stroke: #d4a017; }
+    .mcu { fill: #d6e4ff; stroke: #2a6df4; }
+    .sensor { fill: #d9f2e6; stroke: #2e9e6b; }
+    .label { font-size: 14px; font-weight: bold; fill: #1a1a1a; text-anchor: middle; }
+    .small { font-size: 11px; fill: #555; text-anchor: middle; }
+    .arrow { stroke: #555; stroke-width: 1.8; fill: none; marker-end: url(#arr); }
+  </style>
+  <defs>
+    <marker id="arr" markerWidth="10" markerHeight="10" refX="8" refY="3" orient="auto">
+      <path d="M0,0 L8,3 L0,6 Z" fill="#555"/>
+    </marker>
+  </defs>
+
+  <text x="460" y="32" text-anchor="middle" class="title">光伏储能监测盒 · 系统框图</text>
+
+  <!-- ===== 能量流（子系统二）===== -->
+  <text x="460" y="62" text-anchor="middle" class="sub">能量流（子系统二 · 光伏储能充放电）</text>
+
+  <rect x="40" y="85" width="150" height="62" rx="8" class="box energy"/>
+  <text x="115" y="110" class="label">太阳能板</text>
+  <text x="115" y="128" class="small">5.5V / 200-400mA</text>
+
+  <rect x="270" y="85" width="170" height="62" rx="8" class="box energy"/>
+  <text x="355" y="108" class="label">充电管理模块</text>
+  <text x="355" y="126" class="small">CN3791 或 TP4056</text>
+
+  <rect x="520" y="85" width="150" height="62" rx="8" class="box energy"/>
+  <text x="595" y="110" class="label">18650 锂电池</text>
+  <text x="595" y="128" class="small">带保护板</text>
+
+  <rect x="750" y="85" width="130" height="62" rx="8" class="box energy"/>
+  <text x="815" y="110" class="label">放电负载</text>
+  <text x="815" y="128" class="small">USB 小风扇</text>
+
+  <line x1="190" y1="116" x2="266" y2="116" class="arrow"/>
+  <line x1="440" y1="116" x2="516" y2="116" class="arrow"/>
+  <line x1="670" y1="116" x2="746" y2="116" class="arrow"/>
+
+  <!-- ===== 数据流（子系统一）===== -->
+  <text x="460" y="190" text-anchor="middle" class="sub">数据流（子系统一 · STM32 采集显示）</text>
+
+  <!-- STM32 中心 -->
+  <rect x="380" y="290" width="180" height="90" rx="10" class="box mcu"/>
+  <text x="470" y="320" class="label">STM32F103C8T6</text>
+  <text x="470" y="338" class="small">主控 · 采集 / 显示 / 保护</text>
+  <text x="470" y="356" class="small">Blue Pill</text>
+
+  <!-- 传感器 -->
+  <rect x="60" y="210" width="150" height="58" rx="8" class="box sensor"/>
+  <text x="135" y="234" class="label">OLED 显示屏</text>
+  <text x="135" y="252" class="small">SSD1306 · I2C</text>
+
+  <rect x="60" y="300" width="150" height="58" rx="8" class="box sensor"/>
+  <text x="135" y="324" class="label">INA226</text>
+  <text x="135" y="342" class="small">电流 / 电压 · I2C</text>
+
+  <rect x="60" y="390" width="150" height="58" rx="8" class="box sensor"/>
+  <text x="135" y="414" class="label">DS18B20</text>
+  <text x="135" y="432" class="small">温度 · 1-Wire</text>
+
+  <rect x="60" y="480" width="150" height="34" rx="8" class="box sensor"/>
+  <text x="135" y="502" class="label">按键 PA1 / PA2</text>
+
+  <!-- 输出 -->
+  <rect x="700" y="300" width="160" height="58" rx="8" class="box sensor"/>
+  <text x="780" y="324" class="label">CH340 串口</text>
+  <text x="780" y="342" class="small">USB-TTL · 数据导出</text>
+
+  <!-- 连线 -->
+  <line x1="210" y1="239" x2="376" y2="310" class="arrow"/>
+  <line x1="210" y1="329" x2="376" y2="330" class="arrow"/>
+  <line x1="210" y1="419" x2="376" y2="360" class="arrow"/>
+  <line x1="210" y1="497" x2="376" y2="380" class="arrow"/>
+  <line x1="560" y1="335" x2="696" y2="329" class="arrow"/>
+
+  <!-- 图例 -->
+  <text x="460" y="512" text-anchor="middle" class="small">黄色 = 能量流 · 蓝色 = 主控 · 绿色 = 传感器/外设</text>
+</svg>
